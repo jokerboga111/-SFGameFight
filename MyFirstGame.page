@@ -1,0 +1,28 @@
+<apex:page controller="FightController" sidebar="false">
+    <apex:form >
+        <apex:pageBlock title="Unit parameters" id="unit_parameters">
+            <apex:pageBlockSection columns="4">
+                First GameUnit Name:        <apex:inputText value="{!FirstUnit.Name}"/>
+                Second GameUnit Name:       <apex:inputText value="{!SecondUnit.Name}"/>
+                First GameUnit HealtPoints: <apex:inputText value="{!FirstUnit.HP}"/>
+                Second GameUnit HealtPoints:<apex:inputText value="{!SecondUnit.HP}"/>
+                First GameUnit damageMin:   <apex:inputText value="{!FirstUnit.minDMG}"/>
+                Second GameUnit damageMin:  <apex:inputText value="{!SecondUnit.minDMG}"/>
+                First GameUnit damageMax:   <apex:inputText value="{!FirstUnit.maxDMG}"/>
+                Second GameUnit damageMax:  <apex:inputText value="{!SecondUnit.maxDMG}"/>
+            </apex:pageBlockSection>
+            <apex:commandButton action="{!fight}" value="Fight" rerender="Results"/>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:outputPanel id="Results">
+        <apex:form >
+            <apex:pageBlock title="Fight result" id="fight_results">
+                <apex:dataList value="{!game.fightLogs}" var="fightlog">
+                    <apex:outputText value="{!fightlog}"/>
+                </apex:dataList>
+                Winner:
+                <apex:outputText value="{!winner.Name}"/>
+            </apex:pageBlock>
+        </apex:form>
+    </apex:outputPanel>
+</apex:page>
