@@ -1,17 +1,17 @@
-public class FightController{
-public FightGame game{get;set;}
-public FightUnit FirstUnit{get;set;}
-public FightUnit SecondUnit{get;set;}
-public FightUnit winner{get;set;}
+public class fightController{
+public fightGame game{get;set;}
+public fightUnit firstUnit{get;set;}
+public fightUnit secondUnit{get;set;}
+public fightUnit winner{get;set;}
 
- public FightController(){
- this.FirstUnit=new FightUnit();
- this.SecondUnit=new FightUnit();
- this.winner=new FightUnit();}
+ public fightController(){
+ this.firstUnit=new fightUnit();
+ this.secondUnit=new fightUnit();
+ this.winner=new fightUnit();}
  
 public PageReference fight() {
-        game = new FightGame();
-        winner = game.fight(FirstUnit, SecondUnit);
+        game = new fightGame();
+        winner = game.fight(firstUnit, secondUnit);
         return null;
     }
  
