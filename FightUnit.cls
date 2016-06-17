@@ -1,19 +1,9 @@
 public class FightUnit{
     private String name;
-    private Integer HP;
+    private Integer healthPoint;
     private Integer minDMG;
     private Integer maxDMG;
-    
-    public FightUnit(){
-        
-    }
 
-    public FightUnit(String name, Integer healthPoint, Integer damageMin, Integer damageMax) {
-        this.name = name;
-        this.HP = healthPoint;
-        this.minDMG = damageMin;
-        this.maxDMG = damageMax;
-    }
 
     public String getName() {
         return name;
@@ -23,12 +13,12 @@ public class FightUnit{
         this.name = name;
     }
 
-    public Integer getHP() {
-        return HP;
+    public Integer getHealthPoint() {
+        return healthPoint;
     }
 
-    public void setHP(Integer healthPoint) {
-        this.HP=healthPoint;
+    public void setHealthPoint(Integer healthPoint) {
+        this.healthPoint=healthPoint;
     }
 
     public Integer getMinDMG() {
