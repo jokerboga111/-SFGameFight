@@ -1,48 +1,102 @@
 public class FightGame {
+public class FightGame {
     public List<String> fightLogs{get;set;}
 
-    public FightGame(){
+    public FightGame()
+    {
         this.fightLogs=new List<String>();
     }
+   
+    public Integer getRandomNumber(Integer size)
+    {
+          Double d = math.random() * size;
+          return d.intValue();
+    }   
     
-
+    private Boolean getRandomBoolean()
+    {
+          if(math.mod(getRandomNumber(10),2) == 0)
+          {
+               return true;
+          }
+          else
+          {
+               return false;
+          }
+     }
     
- public FightUnit fight(FightUnit unitFirst, FightUnit unitSecond) {
-
-        while (unitFirst.getHP() > 0 && unitSecond.getHP() > 0) {
-            if (Math.random() > 0.5) {    // randomizing players turn
+ public FightUnit fight(FightUnit unitFirst, FightUnit unitSecond) 
+    {
+        while (unitFirst.getHealthPoint() > 0 && unitSecond.getHealthPoint() > 0) 
+        {
+            if (getRandomBoolean())//use method RandomBoolean
+            { 
                 oneKick(unitFirst, unitSecond);
-            } else {
+            } 
+            else 
+            {
                 oneKick( unitSecond,unitFirst);
             }
         }
-         return inspectionHP(unitFirst,unitSecond);
+        return inspectionHP(unitFirst,unitSecond);
 
     }
-     public FightUnit inspectionHP(FightUnit unitFirst,FightUnit unitSecond){
-        if (unitFirst.getHP() > 0) {
+     public FightUnit inspectionHP(FightUnit unitFirst,FightUnit unitSecond)
+     {
+        if (unitFirst.getHealthPoint() > 0) 
+        {
             return unitFirst;
-        } else {
+        }
+         else 
+        {
             return unitSecond;
         }
-        }
+     }
     
-      private void oneKick(FightUnit unitFirst, FightUnit unitSecond) {
-        Integer loseHp = unitFirst.getHP() - KickRandom(unitSecond);
-        if (loseHp > 0) {
-            fightLogs.add(unitFirst.getName() + ' ÓÒÚ‡ÎÓÒ¸'+unitFirst.getHP() + ' ÊËÁÌÂÌ˚ı ÔÓËÌÚÓ‚.');
-            unitFirst.setHP(loseHp);
-        } else {
-            unitFirst.setHP(0);
-            fightLogs.add(unitFirst.getName() + ' ÓÒÚ‡ÎÓÒ¸'+unitFirst.getHP() + ' ÊËÁÌÂÌ˚ı ÔÓËÌÚÓ‚.');
-            fightLogs.add(unitFirst.getName() + ' ”ÏÂ,ÒÎ‡·‡Í!!!');
+      private void oneKick(FightUnit unitFirst, FightUnit unitSecond) 
+      {
+        Integer loseHp = unitFirst.getHealthPoint() - KickRandom(unitSecond);
+       
+        if (loseHp > 0) 
+        {
+         unitFirst.setHealthPoint(loseHp);
+         fightLogs.add(unitFirst.getName() + ' –æ—Å—Ç–∞–ª–æ—Å—å '+unitFirst.getHealthPoint() + ' –∂–∏–∑–Ω–µ–Ω—ã—Ö –ø–æ–∏–Ω—Ç–æ–≤.');
+        } 
+        else
+        {
+         unitFirst.setHealthPoint(0);
+         fightLogs.add(unitFirst.getName() + ' –æ—Å—Ç–∞–ª–æ—Å—å '+unitFirst.getHealthPoint() + ' –∂–∏–∑–Ω–µ–Ω—ã—Ö –ø–æ–∏–Ω—Ç–æ–≤.');
+         fightLogs.add(unitFirst.getName() + ' –£–º–µ—Ä,—Å–ª–∞–±–∞–∫!!!');
         
         }
-    }
+      }
     
       private Integer KickRandom(FightUnit unit){
-      Integer Kick=(Integer) (Math.floor(Math.random()*(unit.getMaxDMG() - unit.getMinDMG() + 1) + unit.getMinDMG()));
-      fightLogs.add(unit.getName() + ' ‡Ú‡ÍÓ‚‡Î Ò ÒËÎÓÈ ' + Kick);	
-      return Kick;
+      
+       Integer Kick=(Integer) (Math.floor(Math.random()*(unit.getMaxDMG() - unit.getMinDMG() + 1) + unit.getMinDMG()));
+       String chest='–≥—Ä—É–¥—å';
+       String head='–≥–æ–ª–æ–≤–∞';
+       String legs='–Ω–æ–≥–∏';
+       Integer atackChois=(Integer)(Math.random()*3);
+       Integer blockChois=(Integer)(Math.random()*3);
+       
+       if(atackChois==blockChois)
+       {
+       fightLogs.add(unit.getName() + ' –±–ª–æ–∫–∏—Ä–æ–≤–∞–ª —É–¥–∞—Ä');
+       Kick=0;
+       }
+       if(atackChois==0)
+       {
+       fightLogs.add(unit.getName() + ' –∞—Ç–∞–∫–æ–≤–∞–ª —Å —Å–∏–ª–æ–π ' + Kick+' –≤ '+ head);
+       }
+       else if(atackChois==1)
+       {
+       fightLogs.add(unit.getName() + ' –∞—Ç–∞–∫–æ–≤–∞–ª —Å —Å–∏–ª–æ–π ' + Kick+' –≤ '+ chest);
+       }else
+       {
+       fightLogs.add(unit.getName() + ' –∞—Ç–∞–∫–æ–≤–∞–ª —Å —Å–∏–ª–æ–π ' + Kick+' –≤ '+ legs);
+       }
+         
+       return Kick;
     }
 }
