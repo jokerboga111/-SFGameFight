@@ -4,8 +4,8 @@
             <apex:pageBlockSection columns="4">
                 First GameUnit Name:        <apex:inputText value="{!FirstUnit.Name}"/>
                 Second GameUnit Name:       <apex:inputText value="{!SecondUnit.Name}"/>
-                First GameUnit HealtPoints: <apex:inputText value="{!FirstUnit.HP}"/>
-                Second GameUnit HealtPoints:<apex:inputText value="{!SecondUnit.HP}"/>
+                First GameUnit HealtPoints: <apex:inputText value="{!FirstUnit.HealthPoint}"/>
+                Second GameUnit HealtPoints:<apex:inputText value="{!SecondUnit.HealthPoint}"/>
                 First GameUnit damageMin:   <apex:inputText value="{!FirstUnit.minDMG}"/>
                 Second GameUnit damageMin:  <apex:inputText value="{!SecondUnit.minDMG}"/>
                 First GameUnit damageMax:   <apex:inputText value="{!FirstUnit.maxDMG}"/>
